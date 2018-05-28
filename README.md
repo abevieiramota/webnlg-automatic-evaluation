@@ -1,3 +1,5 @@
+source: https://gitlab.com/shimorina/webnlg-automatic-evaluation
+
 # Automatic Evaluation for WebNLG Challenge 2017
 Automatic scripts used to evaluate the WebNLG Challenge submissions.
 
