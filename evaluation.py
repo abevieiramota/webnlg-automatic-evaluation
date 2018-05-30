@@ -63,7 +63,7 @@ def generate_files():
     print('Gold count', b.entry_count())
     # metric files generation for all cats
     bleu_ref_files_gen(b, 'all-cat')
-    # ter_3ref_space_files_gen(b, 'all-cat')
+    ter_3ref_space_files_gen(b, 'all-cat')      # need this format for significance testing
     # meteor_ref_files_gen(b, 'all-cat')
     meteor_3ref_files_gen(b, 'all-cat')
     # ter_ref_files_gen(b, 'all-cat')
@@ -73,7 +73,7 @@ def generate_files():
     print('reduced (new)', b_reduced.entry_count())
     # metric files generation for new cats
     bleu_ref_files_gen(b_reduced, 'new-cat')
-    # ter_3ref_space_files_gen(b_reduced, 'new-cat')
+    ter_3ref_space_files_gen(b_reduced, 'new-cat')      # need this format for significance testing
     # meteor_ref_files_gen(b_reduced, 'new-cat')
     meteor_3ref_files_gen(b_reduced, 'new-cat')
     # ter_ref_files_gen(b_reduced, 'new-cat')
@@ -85,7 +85,7 @@ def generate_files():
     print('reduced (old)', bk_reduced.entry_count())
     # metric files generation for old cats
     bleu_ref_files_gen(bk_reduced, 'old-cat')
-    # ter_3ref_space_files_gen(bk_reduced, 'old-cat')
+    ter_3ref_space_files_gen(bk_reduced, 'old-cat')        # need this format for significance testing
     # meteor_ref_files_gen(bk_reduced, 'old-cat')
     meteor_3ref_files_gen(bk_reduced, 'old-cat')
     # ter_ref_files_gen(bk_reduced, 'old-cat')
@@ -202,6 +202,7 @@ def ter_ref_files_gen(b_reduced, param, three_ref_only=False):
 
 
 def ter_3ref_space_files_gen(b_reduced, param):
+    # need this function for significance.py to treat ter files similar to meteor ones.
     # data for ter
     ids_refs = {}
     for entry in b_reduced.entries:
@@ -285,6 +286,7 @@ def read_participant(output_file, teamname):
     # create all-category files
     write_to_file(output, 'all-cat', teamname)
     print('Files creating finished for: ', teamname)
+
 
 def write_to_file(output_reduced, param, teamname):
     out = ''
